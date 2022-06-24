@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yobenali <yobenali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 00:06:53 by yobenali          #+#    #+#             */
-/*   Updated: 2022/06/24 22:31:31 by yobenali         ###   ########.fr       */
+/*   Created: 2022/06/14 06:16:04 by yobenali          #+#    #+#             */
+/*   Updated: 2022/06/14 06:24:08 by yobenali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_err(char *str)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	perror(str);
-	exit (1);
-}
+	size_t			i;
+	unsigned char	*buf;
 
-char	*ft_strdup(char *s1)
-{
-	size_t	len;
-	size_t	i;
-	char	*ptr;
-
-	len = ft_strlen(s1);
-	ptr = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!ptr)
-		return (NULL);
 	i = 0;
+	buf = (unsigned char *) b;
 	while (i < len)
 	{
-		ptr[i] = s1[i];
+		buf[i] = (unsigned char) c;
 		i++;
 	}
-	return (ptr);
+	return ((void *) buf);
+}
+
+void	ft_bzero(void	*s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	t_count;
+	char	*ptr;
+
+	t_count = count * size;
+	ptr = malloc(t_count);
+	if (!ptr)
+		return (NULL);
+	ft_bzero((void *)ptr, t_count);
+	return ((void *)ptr);
 }

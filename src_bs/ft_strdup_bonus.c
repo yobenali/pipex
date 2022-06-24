@@ -6,17 +6,10 @@
 /*   By: yobenali <yobenali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 00:06:53 by yobenali          #+#    #+#             */
-/*   Updated: 2022/06/24 22:31:31 by yobenali         ###   ########.fr       */
+/*   Updated: 2022/06/15 03:10:51 by yobenali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../pipex.h"
-
-void	ft_err(char *str)
-{
-	perror(str);
-	exit (1);
-}
 
 char	*ft_strdup(char *s1)
 {

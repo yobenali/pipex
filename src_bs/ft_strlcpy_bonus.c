@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yobenali <yobenali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 00:06:53 by yobenali          #+#    #+#             */
-/*   Updated: 2022/06/24 22:31:31 by yobenali         ###   ########.fr       */
+/*   Created: 2022/06/14 04:50:56 by yobenali          #+#    #+#             */
+/*   Updated: 2022/06/14 06:24:25 by yobenali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_err(char *str)
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {
-	perror(str);
-	exit (1);
-}
-
-char	*ft_strdup(char *s1)
-{
-	size_t	len;
 	size_t	i;
-	char	*ptr;
 
-	len = ft_strlen(s1);
-	ptr = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	i = -1;
+	if (dstsize > 0)
 	{
-		ptr[i] = s1[i];
-		i++;
+		while (++i < dstsize - 1 && src[i])
+			dst[i] = src[i];
+		dst[i] = '\0';
 	}
-	return (ptr);
+	return (ft_strlen(src));
 }

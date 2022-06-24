@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yobenali <yobenali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 00:06:53 by yobenali          #+#    #+#             */
-/*   Updated: 2022/06/24 22:31:31 by yobenali         ###   ########.fr       */
+/*   Created: 2022/06/14 04:49:38 by yobenali          #+#    #+#             */
+/*   Updated: 2022/06/24 22:06:48 by yobenali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../pipex_bonus.h"
 
-void	ft_err(char *str)
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
-	perror(str);
-	exit (1);
-}
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-char	*ft_strdup(char *s1)
-{
-	size_t	len;
-	size_t	i;
-	char	*ptr;
-
-	len = ft_strlen(s1);
-	ptr = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!ptr)
-		return (NULL);
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
 	i = 0;
-	while (i < len)
-	{
-		ptr[i] = s1[i];
+	if (n == 0)
+		return (0);
+	while (str1[i] == str2[i] && str1[i] && str2[i]
+		&& i < n - 1)
 		i++;
-	}
-	return (ptr);
+	return (str1[i] - str2[i]);
 }
